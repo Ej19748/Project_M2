@@ -1,6 +1,6 @@
 #include <iostream>
 using namespace std;
-
+// 
 int *reverseArray(int[], const int);
 void displayArray(int *, const int);
 
