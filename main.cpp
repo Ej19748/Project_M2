@@ -1,3 +1,35 @@
 #include <iostream>
+using namespace std;
+// Function prototypes
+int *reverseArray(int[], const int);
+void displayArray(int *, const int);
 
-int main() { std::cout << "Hello World!\n"; }
+int main() {
+  const int ARRAY_SIZE = 10; // Defined array size
+  int numbers[ARRAY_SIZE] = {2, 4, 6, 8, 10, 12, 14, 16, 18, 20};
+  // Display the contents of the original array.
+  int *numbers_reversed = reverseArray(numbers, ARRAY_SIZE);
+  cout << endl;
+  // Display the contents of the copy.
+  displayArray(numbers, ARRAY_SIZE);
+  cout << endl;
+  // Display the contents of the original array again.
+  displayArray(numbers_reversed, ARRAY_SIZE);
+  delete[] numbers_reversed;
+  numbers_reversed = nullptr;
+
+  return 0;
+}
+// The reverseArray function accepts an int array and its size as arguments.
+int *reverseArray(int array[], const int SIZE) {
+  int *newArray = new int[SIZE];
+  int j = (SIZE - 1);
+  for (int i = 0; i < SIZE; i++, j--)
+    *(newArray + i) = array[j];
+  return newArray;
+}
+// The displayArray function accepts a pointer to an int array and its size as
+void displayArray(int *array, const int SIZE) {
+  for (int i = 0; i < SIZE; i++)
+    cout << *(array + i) << " ";
+}
